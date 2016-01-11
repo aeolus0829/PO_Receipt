@@ -73,7 +73,6 @@
             </asp:DropDownList>
         </td>
     </tr>
-
     <tr>
         <td class="foot" colspan="2">
             <asp:Label ID="Label4" runat="server" Text="訊息:" Font-Bold="True" Font-Names="微軟正黑體"
