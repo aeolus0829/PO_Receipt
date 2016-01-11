@@ -257,7 +257,8 @@ public partial class WKF_OptionalFields_PO_Receipt_H : WKF_FormManagement_Versio
 
     private void controlVisable(bool p)
     {
-        ddZMOVETYPE.Enabled = PSTNG_DATE.Enabled = DOC_DATE.Enabled = p;
+        // ddZMOVETYPE.Enabled = PSTNG_DATE.Enabled = DOC_DATE.Enabled = p;
+        ddZMOVETYPE.Enabled =  p;
     }
     protected void ddZMOVETYPE_SelectedIndexChanged(object sender, EventArgs e)
     {
