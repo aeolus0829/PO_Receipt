@@ -74,6 +74,28 @@
         </td>
     </tr>
     <tr>
+        <td class="titleS">
+            <asp:Label ID="Label2" runat="server" Text="過帳日期:" Font-Bold="True" Font-Names="微軟正黑體"
+                ForeColor="White"></asp:Label>
+        </td>
+        <td class="contentS2">
+            <igsch:WebDateChooser ID="PSTNG_DATE" runat="server" meta:resourcekey="wdcDeliveryDateResource1"
+                AllowNull="False" Height="19px" Value="07/23/2013 15:11:22" Width="95px">
+            </igsch:WebDateChooser>
+        </td>
+    </tr>
+    <tr>
+        <td class="titleS">
+            <asp:Label ID="Label6" runat="server" Text="文件日期:" Font-Bold="True" Font-Names="微軟正黑體"
+                ForeColor="White"></asp:Label>
+        </td>
+        <td class="contentS2">
+            <igsch:WebDateChooser ID="DOC_DATE" runat="server" meta:resourcekey="wdcDeliveryDateResource1"
+                AllowNull="False" Height="19px" Value="07/23/2013 15:11:22" Width="95px">
+            </igsch:WebDateChooser>
+        </td>
+    </tr>
+    <tr>
         <td class="foot" colspan="2">
             <asp:Label ID="Label4" runat="server" Text="訊息:" Font-Bold="True" Font-Names="微軟正黑體"
                 ForeColor="#666666"></asp:Label>
