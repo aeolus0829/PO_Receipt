@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Master/DialogMasterPage.master" AutoEventWireup="true" CodeFile="PO_Receipt_H.aspx.cs" Inherits="WKF_OptionalFields_PO_Receipt_H" Title="" Culture="auto" meta:resourcekey="PageResource1" UICulture="auto" %>
-<%@ Register Src="~/WKF/FormManagement/UC_FiledDropList.ascx" TagName="UC_FiledDropList" TagPrefix="uc3" %>
-<%@ Register Src="~/Common/ChoiceCenter/UC_ChoiceList.ascx" TagName="UC_ChoiceList" TagPrefix="uc1" %>
+﻿<%@ Page Language="C#" MasterPageFile="/Master/DialogMasterPage.master" AutoEventWireup="true" CodeFile="PO_Receipt_H.aspx.cs" Inherits="WKF_OptionalFields_PO_Receipt_H" Title="" Culture="auto" meta:resourcekey="PageResource1" UICulture="auto" %>
+<%@ Register Src="/WKF/FormManagement/UC_FiledDropList.ascx" TagName="UC_FiledDropList" TagPrefix="uc3" %>
+<%@ Register Src="/Common/ChoiceCenter/UC_ChoiceList.ascx" TagName="UC_ChoiceList" TagPrefix="uc1" %>
 <%@ Register TagPrefix="igtxt" Namespace="Infragistics.WebUI.WebDataInput" Assembly="Infragistics2.WebUI.WebDataInput.v6.2, Version=6.2.20062.1079, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">

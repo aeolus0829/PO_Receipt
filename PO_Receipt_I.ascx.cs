@@ -296,10 +296,6 @@ public partial class WKF_OptionalFields_PO_Receipt_I : WKF_FormManagement_Versio
         }
 
         UpdateItem(tbZPONO.Text);
-
-
-
-
     }
 
     private void UpdateItem(string nowitem)
@@ -367,12 +363,20 @@ public partial class WKF_OptionalFields_PO_Receipt_I : WKF_FormManagement_Versio
         }
 
       string MOVETYPE = (Session["MOVETYPE"] != null) ? Session["MOVETYPE"] .ToString(): "";
-        axl.SapCon.PO_Receipt_get get = new axl.SapCon.PO_Receipt_get();
+        PO_Receipt_get get = new PO_Receipt_get();
         get.Update(nowitem, MOVETYPE, txtFieldValue.Text);
 
         DataTable DT = get.POITEM;
         DataTable ACCOUNT = get.POACCOUNT;
         DataTable VENDOR = get.POHEADER;
+
+        string ZMSG = get.ZMSG;
+        string ZFLAG = get.ZFLAG;
+        if (ZFLAG == "E")
+        {
+            warring.Text = ZMSG;
+        } else { warring.Text = ""; }
+
         if (DT.Rows.Count > 0)
         {
             nowvbeln.Value = "," + updateitem;
@@ -390,8 +394,6 @@ public partial class WKF_OptionalFields_PO_Receipt_I : WKF_FormManagement_Versio
             PUR_GROUP_Name = getPUR_GROUP_Name(PUR_GROUP_);
 
         }
-
-
 
         for (int i = 0; i <= DT.Rows.Count - 1; i++)
         {
@@ -888,6 +890,7 @@ public partial class WKF_OptionalFields_PO_Receipt_I : WKF_FormManagement_Versio
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(txtFieldValue.Text);
         XmlNodeList nodeList = xmlDoc.SelectNodes("/FieldValue/Item");
+        warring.Text = "";
 
         if (nodeList.Count > 0)
         {
@@ -905,4 +908,76 @@ public partial class WKF_OptionalFields_PO_Receipt_I : WKF_FormManagement_Versio
         DataList1.DataBind();
         GVGetData1();
     }
+}
+
+public class PO_Receipt_get
+{
+    public DataTable POHEADER, POITEM, POACCOUNT;
+    public string ZMSG, ZFLAG, newxml;
+        /*
+    public DataTable POHEADER
+    {
+        get;
+        set;
+    }
+
+    public DataTable POITEM
+    {
+        get;
+        set;
+    }
+
+    public DataTable POACCOUNT
+    {
+        get;
+        set;
+    }
+
+    public string newxml
+    {
+        get;
+        set;
+    }
+    public DataTable ZMSG
+    {
+        get;
+        set;
+    }
+    public DataTable ZFLAG
+    {
+        get;
+        set;
+    }
+    */
+
+    public bool Update(string po, string MOVETYPE, string txtField)
+    {
+        bool result = false;
+        Logon logon = new Logon();
+        try
+        {
+            logon.Conncet();
+            Function function = new Function();
+            logon.SetFunction("ZRFC006");
+            logon.Field_SetValue("PURCHASEORDER", po);
+            logon.Field_SetValue("ZRFCTYPE", "G");
+            logon.StartFunction();
+            this.ZMSG = logon.Retrun_String("ZMSG");
+            this.ZFLAG = logon.Retrun_String("ZFLAG");
+            this.POHEADER = logon.getStruct("POHEADER");
+            this.POITEM = logon.Return_Message("POITEM");
+            this.POACCOUNT = logon.Return_Message("POACCOUNT");
+        }
+        finally
+        {
+            logon.dispose();
+        }
+        if (this.POITEM.Rows.Count > 0)
+        {
+            result = true;
+        }
+        return result;
+    }
+
+
 }
