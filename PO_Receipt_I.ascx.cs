@@ -914,41 +914,6 @@ public class PO_Receipt_get
 {
     public DataTable POHEADER, POITEM, POACCOUNT;
     public string ZMSG, ZFLAG, newxml;
-        /*
-    public DataTable POHEADER
-    {
-        get;
-        set;
-    }
-
-    public DataTable POITEM
-    {
-        get;
-        set;
-    }
-
-    public DataTable POACCOUNT
-    {
-        get;
-        set;
-    }
-
-    public string newxml
-    {
-        get;
-        set;
-    }
-    public DataTable ZMSG
-    {
-        get;
-        set;
-    }
-    public DataTable ZFLAG
-    {
-        get;
-        set;
-    }
-    */
 
     public bool Update(string po, string MOVETYPE, string txtField)
     {
